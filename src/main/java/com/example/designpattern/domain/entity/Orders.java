@@ -22,14 +22,15 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "order_status", nullable = false)
-    private String orderStatus;
+    @Column(name = "order_status", nullable = false) // true -> 정상 저장
+    private Boolean orderStatus;
 
-    @Column(name = "addressee", nullable = false)
-    private String addressee;
 
-    @Column(name = "address", nullable = false)
-    private String address;
+    @Column(name = "receiver", nullable = false)
+    private String receiver;
+
+    @Column(name = "sender", nullable = false)
+    private String sender;
 
     @Column(name = "telephone", nullable = false)
     private String telephone;
@@ -47,11 +48,11 @@ public class Orders {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Orders(String orderStatus, String addressee, String address,
+    public Orders(Boolean orderStatus, String receiver, String sender,
                   String telephone, String orderComment, Products products, User user) {
         this.orderStatus = orderStatus;
-        this.addressee = addressee;
-        this.address = address;
+        this.receiver = receiver;
+        this.sender = sender;
         this.telephone = telephone;
         this.orderComment = orderComment;
         this.products = products;

@@ -6,11 +6,11 @@ import com.example.designpattern.domain.entity.User;
 
 public class OrderBuilder {
 
-    private String orderStatus;
+    private Boolean orderStatus;
 
-    private String addressee;
+    private String receiver;
 
-    private String address;
+    private String sender;
 
     private String telephone;
 
@@ -20,18 +20,18 @@ public class OrderBuilder {
 
     private User user;
 
-    public OrderBuilder setOrderStatus(String orderStatus) {
+    public OrderBuilder setOrderStatus(boolean orderStatus) {
         this.orderStatus = orderStatus;
         return this;
     }
 
-    public OrderBuilder setAddressee(String addressee) {
-        this.addressee = addressee;
+    public OrderBuilder setReceiver(String receiver) {
+        this.receiver = receiver;
         return this;
     }
 
-    public OrderBuilder setAddress(String address) {
-        this.address = address;
+    public OrderBuilder setSender(String sender) {
+        this.sender = sender;
         return this;
     }
 
@@ -56,7 +56,7 @@ public class OrderBuilder {
     }
 
     public Orders build() {
-        return new Orders(this.orderStatus, this.addressee, this.address,
+        return new Orders(this.orderStatus, this.receiver, this.sender,
                 this.telephone, this.orderComment, this.products, this.user);
     }
 }
