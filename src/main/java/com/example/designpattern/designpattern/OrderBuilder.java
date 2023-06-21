@@ -1,7 +1,7 @@
 package com.example.designpattern.designpattern;
 
-import com.example.designpattern.domain.entity.Order;
-import com.example.designpattern.domain.entity.Product;
+import com.example.designpattern.domain.entity.Orders;
+import com.example.designpattern.domain.entity.Products;
 import com.example.designpattern.domain.entity.User;
 
 public class OrderBuilder {
@@ -16,7 +16,7 @@ public class OrderBuilder {
 
     private String orderComment;
 
-    private Product product;
+    private Products products;
 
     private User user;
 
@@ -45,8 +45,8 @@ public class OrderBuilder {
         return this;
     }
 
-    public OrderBuilder setProduct(Product product) {
-        this.product = product;
+    public OrderBuilder setProduct(Products products) {
+        this.products = products;
         return this;
     }
 
@@ -55,8 +55,8 @@ public class OrderBuilder {
         return this;
     }
 
-    public Order build() {
-        return new Order(this.orderStatus, this.addressee, this.address,
-                this.telephone, this.orderComment, this.product, this.user);
+    public Orders build() {
+        return new Orders(this.orderStatus, this.addressee, this.address,
+                this.telephone, this.orderComment, this.products, this.user);
     }
 }

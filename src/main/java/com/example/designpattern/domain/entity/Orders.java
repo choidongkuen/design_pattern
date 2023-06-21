@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDateTime;
+
 @Slf4j
 @Getter
 @Builder
@@ -14,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @Table(name = "orders")
 @Entity
-public class Order extends BaseEntity {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,20 +37,28 @@ public class Order extends BaseEntity {
     @Column(name = "order_comment")
     private String orderComment;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
     @ManyToOne
-    private Product product; // 주문당 상품 1개
+    private Products products; // 주문당 상품 1개
 
     @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
-    public Order(String orderStatus, String addressee, String address,
-                 String telephone, String orderComment, Product product, User user) {
+    public Orders(String orderStatus, String addressee, String address,
+                  String telephone, String orderComment, Products products, User user) {
         this.orderStatus = orderStatus;
         this.addressee = addressee;
         this.address = address;
         this.telephone = telephone;
         this.orderComment = orderComment;
-        this.product = product;
+        this.products = products;
         this.user = user;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

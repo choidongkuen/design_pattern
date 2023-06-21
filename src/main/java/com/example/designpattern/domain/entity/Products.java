@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.time.LocalDateTime;
+
 @Slf4j
 @Getter
 @Builder
@@ -15,7 +17,7 @@ import org.hibernate.annotations.ColumnDefault;
 @NoArgsConstructor
 @Table(name = "products")
 @Entity
-public class Product extends BaseEntity {
+public class Products {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,13 +36,20 @@ public class Product extends BaseEntity {
     @ColumnDefault("0")
     private Integer stock;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
     @Column(name = "is_sold")
     private Boolean isSold;
 
-    public Product(String name, Integer price, Integer salePrice, Integer stock) {
+    public Products(String name, Integer price, Integer salePrice, Integer stock) {
         this.name = name;
         this.price = price;
         this.salePrice = salePrice;
         this.stock = stock;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

@@ -9,7 +9,11 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateUserRequestDto {
+public class UpdateUserRequestDto {
+
+    /**
+     * 이름, 비밀번호 변경용 DTO
+     */
 
     @NotBlank
     @Size(max = 255)
@@ -18,11 +22,4 @@ public class CreateUserRequestDto {
     @NotBlank
     @Size(max = 255)
     private String password;
-
-    @NotBlank
-    @Size(max = 255)
-    private String telephone;
-
-    @NotBlank
-    private String gender;
 }

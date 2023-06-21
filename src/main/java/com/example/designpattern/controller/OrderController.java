@@ -13,10 +13,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderController {
 
-    /**
-     * 1. 주문 생성 POST /order
-     * 2. 주문 삭제 DELETE /order
-     * 3. 주문 조회 GET / order
-     * 4. 주문 수정 PUT / order
-     */
+
 }

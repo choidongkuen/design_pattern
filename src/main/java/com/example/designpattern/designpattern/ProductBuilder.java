@@ -1,6 +1,6 @@
 package com.example.designpattern.designpattern;
 
-import com.example.designpattern.domain.entity.Product;
+import com.example.designpattern.domain.entity.Products;
 
 public class ProductBuilder {
     private String name = null;
@@ -39,7 +39,7 @@ public class ProductBuilder {
         return this;
     }
 
-    public Product build() {
-        return new Product(this.name, this.price, this.salePrice, this.stock);
+    public Products build() {
+        return new Products(this.name, this.price, this.salePrice, this.stock);
     }
 }

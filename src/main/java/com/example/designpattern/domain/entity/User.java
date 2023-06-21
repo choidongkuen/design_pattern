@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDateTime;
+
 @Slf4j
 @Getter
 @Builder
@@ -14,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @Table(name = "users")
 @Entity
-public class User extends BaseEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +34,9 @@ public class User extends BaseEntity {
     @Column(name = "gender")
     private String gender;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
     @Column(name = "is_banned")
     private boolean isBanned; // 정지 여부
 
@@ -40,5 +45,9 @@ public class User extends BaseEntity {
         this.password = password;
         this.telephone = telephone;
         this.gender = gender;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }
