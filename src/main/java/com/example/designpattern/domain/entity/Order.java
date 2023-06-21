@@ -1,15 +1,11 @@
 package com.example.designpattern.domain.entity;
 
-import com.example.designpattern.dto.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @Getter
@@ -25,8 +21,7 @@ public class Order extends BaseEntity {
     private Long id;
 
     @Column(name = "order_status", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private OrderStatus orderStatus;
+    private String orderStatus;
 
     @Column(name = "addressee", nullable = false)
     private String addressee;
@@ -40,9 +35,20 @@ public class Order extends BaseEntity {
     @Column(name = "order_comment")
     private String orderComment;
 
-    @OneToMany(mappedBy = "orders")
-    private List<OrderProduct> orderProducts = new ArrayList<>();
+    @ManyToOne
+    private Product product; // 주문당 상품 1개
 
     @OneToOne
     private User user;
+
+    public Order(String orderStatus, String addressee, String address,
+                 String telephone, String orderComment, Product product, User user) {
+        this.orderStatus = orderStatus;
+        this.addressee = addressee;
+        this.address = address;
+        this.telephone = telephone;
+        this.orderComment = orderComment;
+        this.product = product;
+        this.user = user;
+    }
 }

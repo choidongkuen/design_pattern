@@ -1,6 +1,5 @@
 package com.example.designpattern.domain.entity;
 
-import com.example.designpattern.dto.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,9 +30,15 @@ public class User extends BaseEntity {
     private String telephone;
 
     @Column(name = "gender")
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private String gender;
 
     @Column(name = "is_banned")
     private boolean isBanned; // 정지 여부
+
+    public User(String name, String password, String telephone, String gender) {
+        this.name = name;
+        this.password = password;
+        this.telephone = telephone;
+        this.gender = gender;
+    }
 }

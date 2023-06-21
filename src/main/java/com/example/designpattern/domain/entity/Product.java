@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.ColumnDefault;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Slf4j
 @Getter
 @Builder
@@ -40,6 +37,10 @@ public class Product extends BaseEntity {
     @Column(name = "is_sold")
     private Boolean isSold;
 
-    @OneToMany(mappedBy = "products")
-    private List<OrderProduct> orderProducts = new ArrayList<>();
+    public Product(String name, Integer price, Integer salePrice, Integer stock) {
+        this.name = name;
+        this.price = price;
+        this.salePrice = salePrice;
+        this.stock = stock;
+    }
 }
