@@ -2,6 +2,8 @@ package com.example.designpattern.designpattern;
 
 import com.example.designpattern.domain.entity.Products;
 
+import java.time.LocalDateTime;
+
 public class ProductBuilder {
     private String name = null;
 
@@ -11,12 +13,9 @@ public class ProductBuilder {
 
     private Integer stock = null;
 
-    public ProductBuilder(String name, Integer price, Integer salePrice, Integer stock) {
-        this.name = name;
-        this.price = price;
-        this.salePrice = salePrice;
-        this.stock = stock;
-    }
+    private Boolean isSold = null;
+
+    private LocalDateTime createdAt = null;
 
 
     public ProductBuilder setName(String name) {
@@ -39,7 +38,18 @@ public class ProductBuilder {
         return this;
     }
 
+    public ProductBuilder setIsSold(Boolean isSold) {
+        this.isSold = true;
+        return this;
+    }
+
+    public ProductBuilder setCreatedAt(LocalDateTime time) {
+        this.createdAt = time;
+        return this;
+    }
+
     public Products build() {
-        return new Products(this.name, this.price, this.salePrice, this.stock);
+        return new Products(this.name, this.price,
+                this.salePrice, this.stock, this.isSold, this.createdAt);
     }
 }

@@ -42,11 +42,14 @@ public class Products {
     @Column(name = "is_sold")
     private Boolean isSold;
 
-    public Products(String name, Integer price, Integer salePrice, Integer stock) {
+    public Products(String name, Integer price, Integer salePrice,
+                    Integer stock, Boolean isSold, LocalDateTime time) {
         this.name = name;
         this.price = price;
         this.salePrice = salePrice;
         this.stock = stock;
+        this.isSold = isSold;
+        this.createdAt = time;
     }
 
     public void setCreatedAt(LocalDateTime createdAt) {
